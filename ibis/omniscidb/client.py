@@ -671,7 +671,8 @@ class OmniSciDBClient(SQLClient):
 
     def close(self):
         """Close OmniSciDB connection and drop any temporary objects."""
-        self.con.close()
+        if not self.con.closed:
+            self.con.close()
 
     def _adapt_types(self, descr):
         names = []
