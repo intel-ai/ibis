@@ -618,6 +618,7 @@ class OmniSciDBClient(SQLClient):
         self.db_name = database
         self.protocol = protocol
         self.session_id = session_id
+        self.con = None
 
         self._check_execution_type(ipc=ipc, gpu_device=gpu_device)
 
@@ -671,7 +672,7 @@ class OmniSciDBClient(SQLClient):
 
     def close(self):
         """Close OmniSciDB connection and drop any temporary objects."""
-        if not self.con.closed:
+        if self.con and not self.con.closed:
             self.con.close()
 
     def _adapt_types(self, descr):
