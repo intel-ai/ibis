@@ -45,7 +45,7 @@ dependencies:
   - rtree
   - ruamel.yaml
   - shapely
-  - sqlalchemy>=1.1
+  - sqlalchemy>=1.1,<1.4
   - thrift>=0.9.3
   - thriftpy2  # required for impyla in case of py3
   - toolz
